@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://6oebx8ca30cl"]
+
+[ext_resource type="Script" path="res://scenes/button.gd" id="1_a0e5m"]
+
+[sub_resource type="SystemFont" id="SystemFont_164mi"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 800
+subpixel_positioning = 0
+
+[node name="Button" type="MarginContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_a0e5m")
+
+[node name="Button" type="LinkButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_164mi")
+text = "click me"

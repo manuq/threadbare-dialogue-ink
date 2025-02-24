@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://7yich44jhwf2"]
+
+[ext_resource type="Texture2D" uid="uid://b00c4kiewn30t" path="res://assets/tiny-swords/UI/Banners/Banner_Horizontal.png" id="1_4p65s"]
+[ext_resource type="Script" path="res://scenes/dialogue.gd" id="1_o7tfh"]
+[ext_resource type="Texture2D" uid="uid://dh4tixu06hfwt" path="res://assets/tiny-swords/UI/Banners/Carved_9Slides.png" id="2_6ck24"]
+[ext_resource type="PackedScene" uid="uid://6oebx8ca30cl" path="res://scenes/button.tscn" id="2_7qn3w"]
+
+[sub_resource type="SystemFont" id="SystemFont_4c4c3"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dujna"]
+font = SubResource("SystemFont_4c4c3")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_up5nr"]
+font = SubResource("SystemFont_4c4c3")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="Control"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 684)
+script = ExtResource("1_o7tfh")
+player_text = "Hi! I'm looking for a way out of this cave."
+npc_text = "You'll need light! The way out is, ironically, going deeper into the mountain."
+options = Array[String](["I don't have a lantern"])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -151.0
+offset_right = 92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_4p65s")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PC: hello"
+label_settings = SubResource("LabelSettings_dujna")
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="NPCBox" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/MarginContainer/VBoxContainer/NPCBox"]
+layout_mode = 2
+texture = ExtResource("2_6ck24")
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/NPCBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="NPCLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/NPCBox/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "NPC: hello, how are you?"
+label_settings = SubResource("LabelSettings_up5nr")
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="Button" parent="MarginContainer/MarginContainer/VBoxContainer/OptionsContainer" instance=ExtResource("2_7qn3w")]
+layout_mode = 2
+text = "good"
+
+[node name="Button2" parent="MarginContainer/MarginContainer/VBoxContainer/OptionsContainer" instance=ExtResource("2_7qn3w")]
+layout_mode = 2
+text = "bad"
